@@ -14,7 +14,11 @@ nav:
     - 1.3 Configuring nf-core workflows: session_1/1.3_configure.md
     - 1.4 nf-core for users: session_1/1.4_users.md
   - Session 2:
-    - Introduction: session_2/2.0_intro.md
+    - 2.0 Introduction to session 2: session_2/2.0_intro.md
+    - 2.1 Design and execute an nf-core run command: session_2/2.1_design.md
+    - 2.2 Managing parameter reproducibility: session_2/2.2_params.md
+    - 2.3 Configuring a run for your environment: session_2/2.3_configEnv.md
+    - 2.4 Configurations to customise outputs: session_2/2.4_multiConfig.md
 
 theme:
   name: material
