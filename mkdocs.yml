@@ -19,6 +19,7 @@ nav:
     - 2.2 Managing parameter reproducibility: session_2/2.2_params.md
     - 2.3 Configuring a run for your environment: session_2/2.3_configEnv.md
     - 2.4 Configurations to customise outputs: session_2/2.4_multiConfig.md
+  - Tips & tricks: tips_tricks.md
 
 theme:
   name: material
