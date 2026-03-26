@@ -1,26 +1,22 @@
 # Reproducible workflows with nf-core
 
-This workshop will provide you with the foundational knowledge required to run and customise nf-core workflows in a reproducible manner. The content is broken up into 2 half-day sessions. In the first session we will cover the basic principles of Nextflow and nf-core pipelines. In the second session we will step through various customisation scenarios using the [nf-core/rnaseq](https://nf-co.re/rnaseq/3.22.2) pipeline. We will explore ways to adjust the workflow parameters based on the needs of your dataset and configuration the workflow to run on your computational environment. See the [lesson plan](./lesson_plan.md) for details.
+This workshop will provide you with the foundational knowledge required to run and customise nf-core workflows in a reproducible manner. The content is broken up into 2 half-day sessions. In the first session we will cover the basic principles of running nf-core pipelines. Then, in the second session we will step through various customisation scenarios using the [nf-core/rnaseq](https://nf-co.re/rnaseq/3.23.0) pipeline. We will explore ways to adjust the workflow parameters based on the needs of your dataset and configuration the workflow to run on your computational environment. See the [lesson plan](./lesson_plan.md) for details.
 
 ## Trainers
 
 - Cali Willet, Sydney Informatics Hub, University of Sydney
 - Michael Geaghan, Sydney Informatics Hub, University of Sydney
 
-## Target audience
-
-This workshop is suitable for people who are familiar with working at the command line interface and have some experience running [Nextflow](https://www.nextflow.io/) and [nf-core workflows](https://nf-co.re/pipelines).
-
 ## Prerequisites
 
 - Experience navigating the Unix command line
-- Familiarity with Nextflow and nf-core workflows
+- Familiarity with [Nextflow](https://www.nextflow.io/) and [nf-core workflows](https://nf-co.re/pipelines)
 
 ## Set up requirements
 
 Please complete the [Setup Instructions](./setup.md) **before the course**.
 
-If you have any trouble, please get in contact with us ASAP via Slack.
+If you have any trouble, please get in contact with us ASAP.
 
 ## Code of Conduct
 
@@ -38,7 +34,7 @@ Our full code of conduct, with incident reporting guidelines, is available [here
 
 | Lesson     | Overview |
 |------------|----------|
-| [Set up your computer](./setup.md)| Follow these instructions to install VS Code and login to your Nimbus instance. |
+| [Set up your computer](./setup.md)| Follow these instructions to install VS Code and login to your Nectar VM. |
 | [Session 1: Introduction to nf-core](session_1/1.0_intro.md)| Learn fundamental ideas and skills that are essential for using Nextflow and nf-core workflows. |
 | [Session 2: Customising nf-core](session_2/2.0_intro.md)| Write, run, adjust, and re-run an nf-core workflow as we step through various customisation scenarios. |
 

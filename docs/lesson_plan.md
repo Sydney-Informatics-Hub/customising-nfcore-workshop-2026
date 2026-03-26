@@ -9,15 +9,16 @@ These sessions will provide you with an opportunity to develop your skills and g
 | Session | Lesson | Outcomes | Time (min) |
 |---------|--------|----------|------------|
 | 1 | Session 1 kick-off | Discuss session 1 learning outcomes and set up working space. | 10 |
-| | Introduction to Nextflow | Understand core features of Nextflow and learn fundamental Nextflow options and features. | 40 |
-| | Introduction to nf-core | Understand core features of nf-core and learn how to use `nf-core tools` utility. | 15 |
-| | Break | :coffee: | 15 |
-| | Configuring nf-core workflows | Understand the structure of an nf-core pipeline and the use of customisation options. | 40 |
-| | Commands for users | Apply the `nf-core tools` utility's `list`, `download`, and `launch` commands. | 30 |
+| | Introduction to nf-core and Nextflow | Understand core features of nf-core and Nextflow. | 40 |
+| | Running nf-core workflows | Learn how to pull Nextflow and nf-core pipelines from GitHub, how to run them, and how to inspect the Nextflow logs. | 15 |
+| | Break | :coffee: | 10 |
+| | Configuring nf-core workflows | Understand how Nextflow is configured, how to write configuration files, and how to use Nextflow parameters to modify the run. | 40 |
+| | Break | :coffee: | 10 |
+| | Introduction to nf-core/rnaseq | Learn about nf-core/rnaseq and build a run command using required and optional parameters. | 30 |
 | | | | |
 | 2 | Session 2 kick-off | Discuss session 2 learning outcomes and set up working space. | 10 |
-| | Design a run command | Build a run command for the nf-core/rnaseq pipeline using required and optional parameters. | 30 |
-| | Reproducible parameters | Troubleshoot a pipeline warning message and apply a parameter file to track our parameters. | 20 |
-| | Break | :coffee: | 15 |
-| | Configure compute resources | Configure compute resources for the workflow using a custom configuration file. | 50 |
-| | Apply multiple configurations | Apply multiple configuration files to customise various pipeline settings for the same run. | 50 |
+| | Managing parameter reproducibility | Troubleshoot a pipeline warning message and apply a parameter file to track our parameters. | 20 |
+| | Break | :coffee: | 10 |
+| | Configuring a run for your environment | Configure compute resources for the workflow using a custom configuration file. | 50 |
+| | Break | :coffee: | 10 |
+| | Configurations to customise outputs | Apply multiple configuration files to customise various pipeline settings for the same run. | 50 |

@@ -1,15 +1,15 @@
 # Set up your computer
 
-In this workshop series, we will be using Pawsey’s Nimbus cloud. The [Pawsey Supercomputing Research Centre](https://pawsey.org.au/about-us/about-pawsey/) is one of two, Tier-1, High Performance Computing facilities in Australia.
+In this workshop series, we will be the ARDC Nectar Research Cloud. Each participant will be assigned a separate virtual machine (VM) that will have all the prerequisite software already installed.
 
 The main requirements for this workshop are a personal computer with:
 
+- Visual Studio Code (VS Code)
 - A web browser
-- Visual Studio Code (recommended) or a terminal application
 
-Below, you will find instructions on how to set up a terminal application and web browser on your computer and how to connect to Nimbus. Each participant will be provided with their instance’s IP address at the beginning of the workshop.
+Below, you will find instructions on how to set up VS Code on your computer and how to connect to Nectar. Each participant will be provided with an IP address to their VM at the beginning of the workshop, which will be used to connect to the machine via VS Code.
 
-## Option 1: Install and set up Visual Studio Code
+## Install and set up Visual Studio Code
 
 Visual Studio Code (VS Code) is a lightweight and powerful source code editor available for Windows, macOS and Linux computers.
 
@@ -20,136 +20,91 @@ Visual Studio Code (VS Code) is a lightweight and powerful source code editor av
 
 2. Open the VS Code application on your computer
 
-![](https://user-images.githubusercontent.com/73086054/224881239-86457c3f-9f8f-4724-b780-c633ea8d2180.png)
+![](./assets/0.0_vscode_open.png)
 
-3. Click on the extensions button (four blocks) on the left side bar and install the remote SSH extension. Click on the blue `install` button.
+3. Click on the extensions button (four blocks) on the left side bar.
 
-![](https://user-images.githubusercontent.com/73086054/224881365-2517157c-7bf9-4bd3-ba98-c9d7e3653674.png)
+4. Search for and install the "Remote - SSH" extension. Click on the blue `install` button.
 
-4. Install the Live Server extension. Click on the blue `install` button.
-
-![](https://user-images.githubusercontent.com/73086054/231062539-6a4fc78f-da2e-40a6-9d94-00b702930b67.png)
-
-5. Install the Nextflow extension. Click on the blue `install` button.
-
-![](https://user-images.githubusercontent.com/73086054/236149551-1703e56c-680b-4733-8613-c3409f43b6f2.png)
+![](./assets/0.0_vscode_ext.png)
 
 ### Login via Visual Studio Code
 
-Connect to your instance with VS code by adding the host details to your `.ssh` config file:
+To connect to your VM within VS Code, you first need to add the login details to an SSH config file on your computer. You can do this within VS Code as follows:
 
-1. Go to the list of instance IP addresses provided in the Slack channel
-2. Find and copy your IP address, it will start with 146.118.XXX.XX
-3. In a new VS code terminal, type `Ctrl`+`Shift`+`P` if you're on a Windows machine or `Cmd`+`Shift`+`P` for MacOS to open the command palette
-4. Select `Select Remote-SSH: Open SSH configuration file` and select your `.ssh` config file
-5. Add a new entry using your allocated IP address and save your `.ssh` config file:
+1. Find and copy the IP address for your Nectar VM that you were provided with.
+2. In VS Code, use the keyobard shortcut `Ctrl + Shift + P` (Windows/Linux) or `Cmd + Shift + P` (MacOS) to open the command palette.
+3. Select `Select Remote-SSH: Add New SSH Host...`
+4. In the text box that appears, type `ssh <username>@<ip_address>`, substituting your provided username and IP address.
+    - For example, if your username is `me` and your IP address is `130.56.245.40`, you would type `ssh me@130.56.245.40`
+5. Press `Enter` to submit the SSH command.
+6. In the drop-down box, select an SSH configuration file to update.
+    - Typically, you will want to update the configuration file that is in `${HOME}/.ssh/config`, which will usually be the first one in the list.
+7. You should get a pop-up message saying "Host added!" in the VS Code window.
 
-    ```default
-    Host nfcoreWorkshop
-        HostName 146.118.XXX.XX
-        User training
-    ```
+Now you are ready to connect to the VM via VS Code. To do so:
 
-6. Type `Ctrl`+`Shift`+`P` and select `Remote-SSH: Connect to Host` and `nfcoreWorkshop`
-7. When prompted, select `Linux` as the platform of the remote host from the dropdown menu
-8. Type in your provided password (see the Slack channel for the password) and hit enter
+1. Open the command palette again (`Ctrl + Shift + P` / `Cmd + Shift + P`) and select `Remote-SSH: Connect Current Window to Host...`
+2. In the drop-down box, select the newly-added remote, which should be at the top of the list and should be labelled with your VM's IP address.
+3. Type in your provided password and press enter.
 
 Having successfully logged in, you should see a small blue or green box in the bottom left corner of your screen:
 
-![](https://user-images.githubusercontent.com/73086054/228143085-20a5bdfc-f4e7-4472-b43f-2c975ae5eb4c.png)
+![](./assets/0.0_vscode_connected.png)
 
-To set up your VS Code window for the workshop:
+### Install extensions on the remote machine
 
-1. Open a new folder in the file explorer panel on the left side of the screen by typing `Ctrl` + `K`, `Ctrl` + `O` if you're running Windows or `Cmd`+`K`+ `Cmd` + `O` for MacOS
-2. Select `/home/training` to open your instance's $HOME folder, this is where we will be working
-2. When prompted, select the box for `Trust the authors of all files in the parent folder ‘home’` then click `Yes, I trust the authors`
-3. To open a terminal, type `Ctrl`+`J` if you're on a Windows machine or `Cmd`+`J` on MacOS
+We will now install some helpful VS Code extensions to help with Nextflow syntax highlighting and viewing reports on the remote machine:
+
+1. Ensure you are still connected to the VM as above.
+2. Click on the extensions button (four blocks) on the left side bar.
+3. Search for and install the "Live Server" extension. Click on the blue `install` button.
+
+![](./assets/0.0_vscode_liveserver.png)
+
+4. Search for and install the "Nextflow" extension. Click on the blue `install` button.
+
+![](./assets/0.0_vscode_nextflow.png)
+
+### Install the `code` command on the remote machine
+
+VS Code has a handy command-line tool called `code` that you can run to open any file or folder within VS Code. To install it:
+
+1. Open the command palette (`Ctrl + Shift + P` / `Cmd + Shift + P`) and search for "Shell Command: Install 'code' command in PATH". When you find the command, click on it to begin the installation.
+2. Close any active terminals within VS Code and start a new one for the changes to take effect.
+
+### Open the workshop folder
+
+The last thing to do is to navigate to the workshop folder:
+
+1. Go to the File Explorer view in the left-hand side bar, or press `Ctrl + Shift + E` (Windows/Linux) or `Cmd + Shift + E` (Mac) if it isn't visible.
+2. Click the blue "Open Folder" button.
+3. Select or type `/home/training` to open the $HOME folder in your VM.
+4. If prompted, select the box for `Trust the authors of all files in the parent folder ‘home’` then click `Yes, I trust the authors`
+5. To open a terminal, type `Ctrl + J` (Windows) or `Cmd + J` (MacOS)
+    - **TIP:** You can also use `Ctrl + ~` (all systems) to open a terminal, and `Ctrl + Shift + ~` to open additional terminal tabs, which show up in a panel on the right-hand side of the terminal view.
 
 ### Tips for using VS Code
 
 - [VS code cheatsheet for Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
 - [VS code cheatsheet for MacOS](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf)
 
-| Shortcut | Windows | MacOS |
+| Shortcut | Windows/Linux | MacOS |
 |----------|---------|-------|
-| Show command palette | `ctrl`+`shift`+`P` | `cmd`+`shift`+`P` |
-| Toggle sidebar | `ctrl`+`B` | `cmd`+`B` |
-| Open new window | `ctrl`+`shift`+`N` | `cmd`+`shift`+`N` |
-| Open/close terminal |`ctrl`+`J` | `cmd`+`J` |
-| Quick file open |`ctrl`+`P` | `cmd`+`P` |
-| Zoom in | `ctrl +` | `cmd +` |
-| Zoom out | `ctrl -` | `cmd -` |
-| Find | `ctrl`+`F` | `cmd`+`F` |
-| Save | `ctrl`+`S` | `cmd`+`S` |
-| Select current line | `ctrl`+`L` | `cmd`+`L` |
-| Edit every instance of highlighted string | `ctrl`+`shift`+`L` | `cmd`+`shift`+`L` |
-
-## Option 2: Install and set up a terminal application
-
-The terminal applications available to you will depend on your operating system.
-
-### Linux terminals
-
-If you use Linux, chances are you already know your shell and how to use it. Basically, just open your preferred terminal program and off you go!
-
-### OS X (Mac)
-
-Mac operating systems come with a terminal program, called Terminal. Just look for it in your Applications folder, or hit `Command + Space` and type 'terminal'. You may find that other, 3rd party terminal programs are more user-friendly and powerful, like [Iterm2](https://iterm2.com/).
-
-### Windows
-
-We recommend [MobaXterm](https://mobaxterm.mobatek.net/download.html), which offers a rich experience as a full-featured X-server and terminal emulator for ssh connections, the free version is more than adequate.
-
-To install and start using MobaXterm:
-
-1. Go to https://mobaxterm.mobatek.net/download.html
-2. Under ‘Home Edition’ select the Download now button
-3. Select the MobaXterm Home Edition (Installer edition)
-4. Once the program is downloaded, install it as you would any other windows program
-5. Once the program is installed, start the MobaXterm program
-6. From this screen, click on ‘start local terminal’ (and install Cygwin if prompted)
-
-![](https://user-images.githubusercontent.com/73086054/224888551-527c08c3-90fa-4f6b-beaf-308114880624.png)
-
-### Login via Terminal
-
-To log in to Nimbus, we will use a Secure Shell (SSH) connection. To connect, you need 3 things:
-
-- The assigned IP address of your instance (i.e. 146.118.XXX.XX). Each participant will be provided with their instance’s IP address at the beginning of the workshop.
-- Your login name. In our case, this will be **training** for all participants.
-- Your password. All participants will be provided with a password at the beginning of the workshop.
-
-To log in, type the following into your terminal, using your allocated instance’s IP address:
-
-```default
-ssh training@146.118.XXX.XX
-```
-
-You will receive a message saying:
-
-```default
-The authenticity of host '146.118.XX.XXX (146.118.XX.XXX)' can't be established.
-```
-
-Remember your host address will be different than the one above. There will then be a message saying:
-
-```default
-Are you sure you want to continue connecting (yes/no)?
-```
-
-If you would like to skip this message next time you log in, answer ‘yes’. It will then give a warning:
-
-```default
-Warning: Permanently added '146.118.XX.XXX' (ECDSA) to the list of known hosts.
-```
-
-Enter the password provided at the beginning of the workshop. Ask one of the demonstrators if you’ve forgotten it.
-
-!!! note "Pay attention!"
-
-    When you type a password on the terminal, there will not be any indication the password is being entered. You'll not see a moving cursor, or even any asterisks, or bullets. That is an intentional security mechanism used by all terminal applications and can trip us up sometimes, so be careful when typing or copying your password in.
-
-Having successfully logged in, your terminal should then display something like that shown in the figure below:
-
-![](https://user-images.githubusercontent.com/73086054/228141686-a63a84c1-b714-4797-af8e-2b511421a7d8.png)
-
+| Show command palette | `Ctrl + Shift + P` | `Cmd + Shift + P` |
+| Toggle sidebar | `Ctrl + B` | `Cmd + B` |
+| Open new window | `Ctrl + Shift + N` | `Cmd + Shift + N` |
+| Open new file | `Ctrl + N` | `Cmd + N` |
+| Open existing file/folder | `Ctrl + O` | `Cmd + O` |
+| Open/close terminal |`Ctrl + J` | `Cmd + J` |
+| Open/close terminal (alternative) |`Ctrl + ~` | `Ctrl + ~` |
+| Open additional terminal |`Ctrl + Shift + ~` | `Ctrl + Shift + ~` |
+| Next file or terminal tab | `Ctrl + PageDown` | `Cmd + Shift + ]` |
+| Previous file or terminal tab | `Ctrl + PageUp` | `Cmd + Shift + [` |
+| Quick file open |`Ctrl + P` | `Cmd + P` |
+| Zoom in | `Ctrl +` | `Cmd +` |
+| Zoom out | `Ctrl -` | `Cmd -` |
+| Find | `Ctrl + F` | `Cmd + F` |
+| Save | `Ctrl + S` | `Cmd + S` |
+| Select current line | `Ctrl + L` | `Cmd + L` |
+| Edit every instance of highlighted string | `Ctrl + Shift + L` | `Cmd + Shift + L` |
