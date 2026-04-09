@@ -56,7 +56,7 @@ The nf-core `list` command can be used to print a list of remote nf-core workflo
 nf-core list
 ```
 
-![](./assets/1.4_nf-corelist.svg){width=100%}
+![](./assets/0.0_nf-corelist.svg){width=100%}
 
 The output shows the latest workflow version number and when it was released. You will also be shown if and when a workflow was pulled locally and whether you have the latest version.
 
@@ -66,7 +66,7 @@ Keywords can also be supplied to help filter the workflows based on matches in t
 nf-core list dna
 ```
 
-![](./assets/1.4_nf-corelist-dna.svg){width=100%}
+![](./assets/0.0_nf-corelist-dna.svg){width=100%}
 
 Options can also be used to sort the workflows by latest release (`-s release`, default), when you last pulled a workflow locally (`-s pulled`), alphabetically (`-s name`), or number by the number of GitHub stars (`-s stars`).
 
@@ -82,7 +82,7 @@ nf-core launch nf-core/<workflow>
 
 When running this command, you will first be asked about which version of the workflow you would like to execute. Next, you will be given the choice between a web-based graphical interface or an interactive command-line wizard tool to enter the workflow parameters. Both interfaces show documentation alongside each parameter, will generate a run ID, and will validate your inputs.
 
-![](./assets/1.4_wizard.excalidraw.png){width=100%}
+![](./assets/0.0_wizard.excalidraw.png){width=100%}
 
 The nf-core `launch` tool uses the `nextflow_schema.json` file from a workflow to give parameter descriptions, defaults, and grouping. If no file for the workflow is found, one will be automatically generated at runtime.
 
