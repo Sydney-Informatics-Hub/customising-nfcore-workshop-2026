@@ -11,3 +11,7 @@
   --md-primary-fg-color--light: #ee806b;
   --md-typeset-color:           #cccccc;
 }
+
+.md-typeset .grid {
+  grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr))
+}
