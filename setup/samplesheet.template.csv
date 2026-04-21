@@ -1,0 +1,3 @@
+sample,fastq_1,fastq_2,strandedness
+SRR3473988,/home/USER/data/fastq/SRR3473988_selected.fastq.gz,,forward
+SRR3473989,/home/USER/data/fastq/SRR3473989_selected.fastq.gz,,forward
