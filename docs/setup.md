@@ -79,7 +79,7 @@ The last thing to do is to navigate to the workshop folder:
 
 1. Go to the File Explorer view in the left-hand side bar, or press `Ctrl + Shift + E` (Windows/Linux) or `Cmd + Shift + E` (Mac) if it isn't visible.
 2. Click the blue "Open Folder" button.
-3. Select or type `/home/training` to open the $HOME folder in your VM.
+3. Select or type `/home/<USERNAME>` to open the $HOME folder in your VM (replace `<USERNAME>` with your assigned user name).
 4. If prompted, select the box for `Trust the authors of all files in the parent folder ‘home’` then click `Yes, I trust the authors`
 5. To open a terminal, type `Ctrl + J` (Windows) or `Cmd + J` (MacOS)
     - **TIP:** You can also use `Ctrl + ~` (all systems) to open a terminal, and `Ctrl + Shift + ~` to open additional terminal tabs, which show up in a panel on the right-hand side of the terminal view.
