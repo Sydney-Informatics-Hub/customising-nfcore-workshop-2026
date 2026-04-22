@@ -15,9 +15,9 @@ nav:
     - 1.4 Introduction to nf-core/rnaseq: session_1/1.4_rnaseq.md
   - Session 2:
     - 2.0 Introduction to session 2: session_2/2.0_intro.md
-    - 2.1 Managing parameter reproducibility: session_2/2.1_params.md
-    - 2.2 Configuring a run for your environment: session_2/2.2_env.md
-    - 2.3 Configurations to customise outputs: session_2/2.3_custom.md
+    - 2.1 nf-core workflow parameters: session_2/2.1_params.md
+    - 2.2 Nextflow configuration files: session_2/2.2_config.md
+    - 2.3 Further customisations: session_2/2.3_custom.md
   - Tips & tricks: tips_tricks.md
 
 theme:
