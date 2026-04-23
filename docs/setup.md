@@ -54,7 +54,7 @@ Having successfully logged in, you should see a small blue or green box in the b
 
 ### Install extensions on the remote machine
 
-We will now install some helpful VS Code extensions to help with Nextflow syntax highlighting and viewing reports on the remote machine:
+We will now install some helpful VS Code extensions. The "Nextflow" extension adds Nextflow-specific syntax highlighting. The "Live Server" extension enables us to view HTML reports on the remote machine without having to download them first.
 
 1. Ensure you are still connected to the VM as above.
 2. Click on the extensions button (four blocks) on the left side bar.

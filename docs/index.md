@@ -4,8 +4,8 @@ This workshop will provide you with the foundational knowledge required to run a
 
 ## Trainers
 
-- Cali Willet, Sydney Informatics Hub, University of Sydney
 - Michael Geaghan, Sydney Informatics Hub, University of Sydney
+- Cali Willet, Sydney Informatics Hub, University of Sydney
 
 ## Prerequisites
 
@@ -48,9 +48,9 @@ This workshop event and accompanying materials were developed by the Sydney Info
 
 ### Contributors
 
-- Georgie Samaha, Sydney Informatics Hub, University of Sydney
-- Cali Willet, Sydney Informatics Hub, University of Sydney
-- Chris Hakkaart, Seqera Labs
 - Michael Geaghan, Sydney Informatics Hub, University of Sydney
+- Cali Willet, Sydney Informatics Hub, University of Sydney
+- Georgie Samaha, Sydney Informatics Hub, University of Sydney
+- Chris Hakkaart, Seqera Labs
 
 ![](./assets/0.0_logos.png)
