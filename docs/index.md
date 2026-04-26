@@ -36,7 +36,7 @@ Our full code of conduct, with incident reporting guidelines, is available [here
 |------------|----------|
 | [Set up your computer](./setup.md)| Follow these instructions to install VS Code and login to your Nectar VM. |
 | [Session 1: Introduction to nf-core](session_1/1.0_intro.md)| Learn fundamental ideas and skills that are essential for using Nextflow and nf-core workflows. |
-| [Session 2: Customising nf-core](session_2/2.0_intro.md)| Write, run, adjust, and re-run an nf-core workflow as we step through various customisation scenarios. |
+| [Session 2: Customising nf-core](session_2/2.0_intro.md)| Write, run, adjust, and re-run an nf-core workflow as we step through various customisation and troubleshooting scenarios. |
 
 ## Course survey
 
