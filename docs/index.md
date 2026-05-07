@@ -1,4 +1,6 @@
-# Reproducible workflows with nf-core
+# Unlocking nf-core
+
+## Customising workflows for your research
 
 This workshop will provide you with the foundational knowledge required to run and customise nf-core workflows in a reproducible manner. The content is broken up into 2 half-day sessions. In the first session we will cover the basic principles of running nf-core pipelines. Then, in the second session we will step through various customisation scenarios using the [nf-core/rnaseq](https://nf-co.re/rnaseq/3.23.0) pipeline. We will explore ways to adjust the workflow parameters based on the needs of your dataset and configuration the workflow to run on your computational environment. See the [lesson plan](./lesson_plan.md) for details.
 
@@ -53,4 +55,5 @@ This workshop event and accompanying materials were developed by the Sydney Info
 - Georgie Samaha, Sydney Informatics Hub, University of Sydney
 - Chris Hakkaart, Seqera Labs
 
-![](./assets/0.0_logos.png)
+![](./assets/0.0_biocommons_logo.png){width=40%; style="margin-right: 50px"}
+![](./assets/0.0_sih_logo.png){width=25%}
