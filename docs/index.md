@@ -40,7 +40,7 @@ Our full code of conduct, with incident reporting guidelines, is available [here
 
 ## Course survey
 
-Please fill out our [course survey](https://www.surveymonkey.com/r/custom-nfcore) before you leave. Help us help you! 😁
+Please fill out our [course survey](https://q.surveys.unimelb.edu.au/jfe/form/SV_bNvJSjiZCCoU0U6) before you leave. Help us help you! 😁
 
 ## Credits and acknowledgements
 
