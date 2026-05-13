@@ -8,7 +8,7 @@ These sessions will provide you with an opportunity to develop your skills and g
 
 | Session | Lesson | Outcomes | Time (min) |
 |---------|--------|----------|------------|
-| 1 | Session 1 kick-off | Discuss session 1 learning outcomes and set up working space. | 10 |
+| 1 | Session 1 kick-off | Discuss Session 1 learning outcomes and set up working space. | 10 |
 | | Introduction to nf-core and Nextflow | Understand core features of nf-core and Nextflow. | 40 |
 | | Running nf-core workflows | Learn how to pull Nextflow and nf-core pipelines from GitHub, how to run them, and how to inspect the Nextflow logs. | 15 |
 | | Break | :coffee: | 10 |
@@ -16,7 +16,7 @@ These sessions will provide you with an opportunity to develop your skills and g
 | | Break | :coffee: | 10 |
 | | Introduction to nf-core/rnaseq | Learn about nf-core/rnaseq and build a run command using required and optional parameters. | 30 |
 | | | | |
-| 2 | Session 2 kick-off | Discuss session 2 learning outcomes and set up working space. | 10 |
+| 2 | Session 2 kick-off | Discuss Session 2 learning outcomes and set up working space. | 10 |
 | | Managing parameter reproducibility | Troubleshoot a pipeline warning message and apply a parameter file to track our parameters. | 20 |
 | | Break | :coffee: | 10 |
 | | Configuring a run for your environment | Configure compute resources for the workflow using a custom configuration file. | 50 |

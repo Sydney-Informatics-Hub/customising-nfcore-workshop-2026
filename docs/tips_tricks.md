@@ -48,25 +48,25 @@ Alternatively, nf-core tools can be installed from [Bioconda](https://anaconda.o
 conda install -c bioconda nf-core
 ```
 
-### `nf-core list`
+### `nf-core pipelines list`
 
-The nf-core `list` command can be used to print a list of remote nf-core workflows along with your local workflow information.
+The `nf-core pipelines list` command can be used to print a list of remote nf-core workflows along with your local workflow information.
 
 ```bash
-nf-core list
+nf-core pipelines list
 ```
 
-![](./assets/0.0_nf-corelist.svg){width=100%}
+![](./assets/0.0_nf-corelist.png){width=100%}
 
 The output shows the latest workflow version number and when it was released. You will also be shown if and when a workflow was pulled locally and whether you have the latest version.
 
 Keywords can also be supplied to help filter the workflows based on matches in titles, descriptions, or topics:
 
 ```bash
-nf-core list dna
+nf-core pipelines list dna
 ```
 
-![](./assets/0.0_nf-corelist-dna.svg){width=100%}
+![](./assets/0.0_nf-corelist-dna.png){width=100%}
 
 Options can also be used to sort the workflows by latest release (`-s release`, default), when you last pulled a workflow locally (`-s pulled`), alphabetically (`-s name`), or number by the number of GitHub stars (`-s stars`).
 
@@ -94,3 +94,9 @@ You can also use the launch command directly from the [nf-core launch website](h
 nf-core launch --id <run_id>
 ```
 
+## Other workshops
+
+This workshop is part of a series of Nextflow workshops we have developed at SIH. For more information on running Nextflow pipelines, see the other workshops in the series:
+
+- [Nextflow for Life Sciences](https://sydney-informatics-hub.github.io/hello-nextflow-2025/): An introduction to writing your own Nextflow pipelines within the context of the life sciences and bioinformatics.
+- [Nextflow for HPC workshop](https://sydney-informatics-hub.github.io/nextflow-hpc-workshop/): A deeper dive into customising and optimising Nextflow pipelines specifically for running on HPC systems.

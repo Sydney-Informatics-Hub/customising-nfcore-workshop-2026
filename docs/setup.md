@@ -35,7 +35,7 @@ To connect to your VM within VS Code, you first need to add the login details to
 1. Find and copy the IP address for your Nectar VM that you were provided with.
 2. In VS Code, use the keyobard shortcut `Ctrl + Shift + P` (Windows/Linux) or `Cmd + Shift + P` (MacOS) to open the command palette.
 3. Select `Select Remote-SSH: Add New SSH Host...`
-4. In the text box that appears, type `ssh <username>@<ip_address>`, substituting your provided username and IP address.
+4. In the text box that appears, type `ssh <USERNAME>@<ip_address>`, substituting your provided username and IP address.
     - For example, if your username is `me` and your IP address is `130.56.245.40`, you would type `ssh me@130.56.245.40`
 5. Press `Enter` to submit the SSH command.
 6. In the drop-down box, select an SSH configuration file to update.
