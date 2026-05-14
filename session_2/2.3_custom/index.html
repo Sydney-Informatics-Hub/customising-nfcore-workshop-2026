@@ -1,0 +1,1945 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2.2_config/">
+      
+      
+        <link rel="next" href="../../tips_tricks/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>2.3 Customisation in action - Unlocking nf-core</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-TNWWV3HK57"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-TNWWV3HK57",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-TNWWV3HK57",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#23-case-study-customisation-in-action" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Unlocking nf-core" class="md-header__button md-logo" aria-label="Unlocking nf-core" data-md-component="logo">
+      
+  <img src="../../assets/usyd-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Unlocking nf-core
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.3 Customisation in action
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Sydney-Informatics-Hub/template-mkdocs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sydney-Informatics-Hub/template-mkdocs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Unlocking nf-core" class="md-nav__button md-logo" aria-label="Unlocking nf-core" data-md-component="logo">
+      
+  <img src="../../assets/usyd-logo.png" alt="logo">
+
+    </a>
+    Unlocking nf-core
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Sydney-Informatics-Hub/template-mkdocs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sydney-Informatics-Hub/template-mkdocs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lesson_plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sesson 1
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sesson 1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../session_1/1.0_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 Introduction to Session 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../session_1/1.1_nfcore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 Introduction to nf-core and Nextflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../session_1/1.2_run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 Running nf-core workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../session_1/1.3_configure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 Configuring nf-core workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../session_1/1.4_rnaseq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 Introduction to nf-core/rnaseq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Session 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.0_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 Introduction to Session 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1_params/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 nf-core pipeline parameters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.2_config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Nextflow configuration files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Customisation in action
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Customisation in action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#231-case-study-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.1 Case study introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#232-devising-and-running-a-non-default-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.2 Devising and running a non-default analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#233-troubleshooting-a-failed-custom-pipeline-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.3 Troubleshooting a failed custom pipeline run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#234-configuring-the-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4 Configuring the solution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3.4 Configuring the solution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2341-running-with-multiple-custom-configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4.1 Running with multiple custom configuration files
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2342-applying-a-custom-tool-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4.2 Applying a custom tool version
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2343-adding-a-custom-tool-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4.3 Adding a custom tool parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2345-verifying-customisations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4.5 Verifying customisations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2346-customisation-specificity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4.6 Customisation specificity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#235-customising-resource-tracing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.5 Customising resource tracing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#236-personalise-multiqc-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.6 Personalise MultiQC reports
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#237-workshop-key-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.7 Workshop key points
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips_tricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & tricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#231-case-study-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.1 Case study introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#232-devising-and-running-a-non-default-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.2 Devising and running a non-default analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#233-troubleshooting-a-failed-custom-pipeline-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.3 Troubleshooting a failed custom pipeline run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#234-configuring-the-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4 Configuring the solution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3.4 Configuring the solution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2341-running-with-multiple-custom-configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4.1 Running with multiple custom configuration files
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2342-applying-a-custom-tool-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4.2 Applying a custom tool version
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2343-adding-a-custom-tool-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4.3 Adding a custom tool parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2345-verifying-customisations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4.5 Verifying customisations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2346-customisation-specificity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4.6 Customisation specificity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#235-customising-resource-tracing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.5 Customising resource tracing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#236-personalise-multiqc-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.6 Personalise MultiQC reports
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#237-workshop-key-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.7 Workshop key points
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="23-case-study-customisation-in-action">2.3 Case study: customisation in action</h1>
+<div class="admonition tip">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Execute a non-default analysis with an nf-core pipeline</li>
+<li>Troubleshoot pipeline execution failure</li>
+<li>Use custom configuration files to resolve the failure</li>
+<li>Add additional custom configuration files to augment run output </li>
+</ul>
+</div>
+<h2 id="231-case-study-introduction">2.3.1 Case study introduction</h2>
+<p>In this section, no new nf-core or Nextflow concepts will be introduced. Instead, we will apply a number of the customisation strategies we have learnt over the last two days to a theoretical real-world customisation scenario. </p>
+<p>We will cover a typical journey experienced when you choose to perform a non-standard analysis, including debugging the dreaded <em>error message</em>, searching for the <em>issue solution</em>, and working out how to <em>make the solution work for you</em>.</p>
+<p>We will apply strategic thinking and methodology to:</p>
+<ul>
+<li>Identify and apply changes to the workflow that best suit our experiment goals using <strong>pipeline parameters</strong></li>
+<li>Apply the parameters to the run and <strong>investigate an error message</strong></li>
+<li>Use multiple <strong>custom configurations</strong> to resolve the issue</li>
+<li><strong>Customise resource tracing and QC files</strong> for tailored analysis reporting </li>
+</ul>
+<p><br></p>
+<p>🐭 <strong>The scenario</strong></p>
+<p>Our mouse gene expression study needs preliminary results for a looming deadline. We have been tasked with customising the nf-core/rnaseq pipeline to identify expressed genes in the dataset in a shorter analysis time.</p>
+<h2 id="232-devising-and-running-a-non-default-analysis">2.3.2 Devising and running a non-default analysis</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>nf-core pipelines are extensively tested, yet with so many tool options and pipeline parameters it would be impractical for every possible combination of workflow choices to be tested. This means that a customised run may at times encounter an error. </p>
+<p>This exercise will teach some practical steps to finding an issue solution and applying it using the customisation skills we have covered in the workshop. </p>
+<p>While the exact issue described in this lesson is likely to be transient (i.e. fixed in updated nf-core/rnaseq versions), the included troubleshooting and customisation steps can be applied to other issues you may encounter when customising nf-core runs. </p>
+</div>
+<p><br></p>
+<p>Knowing that the longest-running part of the workflow is the STAR_ALIGN process, we check the <a href="https://nf-co.re/rnaseq/3.23.0">nf-core/rnaseq user guide</a> and see that the alignment step can be customised to use Hisat2 or Bowtie2 aligner with a <strong>pipeline parameter</strong>.</p>
+<p><img alt="" src="../../assets/1.4_nf-core-rnaseq_metro_map_grey_animated.svg" /></p>
+<p><br></p>
+<p>Checking out the user guides for these tools, we find Bowtie2 is not suited to our type of input data, and read that Hisat2 is fast with low RAM usage. Given the limited RAM we have available, we decide to test if this customisation can meet our pipeline goals. </p>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.2 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 3 mins</p>
+<ul>
+<li>Using the <a href="https://nf-co.re/rnaseq/3.23.0/parameters">nf-core/rnaseq parameters guide</a>, find the parameter needed to use the Hisat2 aligner</li>
+<li>Add the new parameter to <code>run_rnaseq.sh</code></li>
+<li>Update the <code>--outdir</code> value to lesson-2.3</li>
+<li>Save the script, then run the updated pipeline by entering the command <code>bash run_rnaseq.sh</code></li>
+</ul>
+<details class="success">
+<summary>Solution</summary>
+<p>The parameter needed to use the Hisat2 aligner is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>--aligner<span class="w"> </span>hisat2<span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><span class="filename">run_rnaseq.sh</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># parameters</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nv">samplesheet</span><span class="o">=</span>~/data/samplesheet.csv
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nv">output_directory</span><span class="o">=</span>lesson-2.3
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nv">ref_fasta</span><span class="o">=</span>~/data/mm10_reference/mm10_chr18.fa
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nv">ref_gtf</span><span class="o">=</span>~/data/mm10_reference/mm10_chr18.gtf
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nv">star_index</span><span class="o">=</span>~/data/mm10_reference/STAR
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nv">salmon_index</span><span class="o">=</span>~/data/mm10_reference/salmon-index
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1"># configurations</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nv">profile</span><span class="o">=</span>workshop
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="nv">config</span><span class="o">=</span>workshop_profile.config
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>nextflow<span class="w"> </span>run<span class="w"> </span>rnaseq/main.nf<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span>--input<span class="w"> </span><span class="si">${</span><span class="nv">samplesheet</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span>--outdir<span class="w"> </span><span class="si">${</span><span class="nv">output_directory</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span>--fasta<span class="w"> </span><span class="si">${</span><span class="nv">ref_fasta</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span>--gtf<span class="w"> </span><span class="si">${</span><span class="nv">ref_gtf</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span>--star_index<span class="w"> </span><span class="si">${</span><span class="nv">star_index</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span>--salmon_index<span class="w"> </span><span class="si">${</span><span class="nv">salmon_index</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span>--skip_markduplicates<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span>--save_trimmed<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span>--save_unaligned<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="hll"><span class="w">    </span>--aligner<span class="w"> </span>hisat2<span class="w"> </span><span class="se">\</span>
+</span><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span>-profile<span class="w"> </span><span class="si">${</span><span class="nv">profile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">config</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span>-resume
+</code></pre></div>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Poll 2.3.2</p>
+<p>Did your run complete, or fail? </p>
+<p>If it failed, what was the error printed to the terminal window? </p>
+<details class="success">
+<summary>Solution</summary>
+<p>In this exercise, some runs may succeed, and some may fail! </p>
+<p>If the run fails, the expected error message is:</p>
+<div class="highlight"><span class="filename">Error message</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">Command error: </span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="go"> (ERR): mkfifo(/tmp/45.unp) failed. </span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="go"> Exiting now ...</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="go"> [main_samview] fail to read the header from &quot;-&quot;.</span>
+</code></pre></div>
+</details>
+</div>
+<h2 id="233-troubleshooting-a-failed-custom-pipeline-run">2.3.3 Troubleshooting a failed custom pipeline run</h2>
+<p><strong>Step 1: What does the error say?</strong></p>
+<p>It appears to have sometihng to do with <code>/tmp</code>. The samtools error shows that the piped command received no output, so the aligner didn't process any reads. This means our input data is likely not the cause.</p>
+<p><strong>Step 2: Is it a filesystem permissions or missing directory issue?</strong></p>
+<p><code>ls -l /tmp</code> shows the directory exists and that we have read and write access to the VM <code>/tmp</code> directory.</p>
+<p><strong>Step 3: Does the process command reveal any potential issues?</strong></p>
+<p>In <a href="../2.1_params/#213-checking-execution-at-the-process-level">Lesson 2.1.3</a> we learnt that the command executed by a process was saved within the <code>.command.sh</code> file in the process work directory and used the <code>nextflow log</code> command to find this command file.</p>
+<p>In this case, we don't need to hunt for the command file as the process work directory has been helpfully printed out alongside the error message.</p>
+<p><em>Note: the work directory below is an example of terminal output, your work directory path will be different</em></p>
+<div class="highlight"><span class="filename">Example</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">Work dir:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="go">  ~/session2/work/dc/5184fdc7c63198d41a03c73790b7f6</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.3.1 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 2 mins</p>
+<p>View the <code>.command.sh</code> file within the failed process work directory, or the example below if your run completed successfully.</p>
+<p>The command shows no obvious issues, with our sample name, <code>.fq.gz</code> input file and reference genome files correctly populated within the process command. No clues here!</p>
+<div class="highlight"><span class="filename">.command.sh</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="go">INDEX=`find -L ./ -name &quot;*.1.ht2*&quot; | sed &#39;s/\.1.ht2.*$//&#39;`</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="go">hisat2 \</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="go">    -x $INDEX \</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="go">    -U SRR3473988_trimmed_trimmed.fq.gz \</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="go">    \</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="go">    --known-splicesite-infile mm10_chr18.filtered.splice_sites.txt \</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="go">    --summary-file SRR3473988.hisat2.summary.log \</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="go">    --threads 2 \</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="go">    --rg-id SRR3473988 --rg SM:SRR3473988 \</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="go">    --un-gz SRR3473988.unmapped.fastq.gz \</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="go">    --met-stderr --new-summary --dta \</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="go">    | samtools view -bS -F 4 -F 256 - &gt; SRR3473988.bam</span>
+</code></pre></div>
+</div>
+<p><strong>Step 4: Is this a known/previously reported issue for the tool or the nf-core pipeline?</strong></p>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.3.2 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 3 mins</p>
+<ul>
+<li>In a web browser, navigate to the <a href="https://github.com/nf-core/rnaseq">nf-core/rnaseq github repository</a></li>
+<li>Select the 'Issues' tab, and search for issues matching the term 'hisat2'</li>
+<li>Also search for issues relating to tmp/temp directory errors in the <a href="https://github.com/DaehwanKimLab/hisat2">Hisat2 github repository</a></li>
+</ul>
+<p><img alt="" src="../../assets/2.3_github_issues.png" width="65%" /></p>
+<p>Can you find any issues relating to the <code>(ERR): mkfifo(/tmp/45.unp)</code> error in either of these repositories? </p>
+<details class="success">
+<summary>Solution</summary>
+<p>The nf-core/rnaseq issues search was not revealing, however a Hisat2 issue titled <a href="https://github.com/DaehwanKimLab/hisat2/issues/438">Enabling a --temp-directory parameter #438</a> describes the exact error message some of use have encountered. </p>
+<p>Reading through the issue activity, you can see that the issue has been linked by an nf-core issue titled 
+<a href="https://github.com/nf-core/modules/issues/9487">update module: HISAT2/ALIGN #9487</a>. </p>
+<p>Following this link, we can see that nf-core have marked this issue as 'WIP' (work in progress). Seems like we have found a solution to our bug! </p>
+</details>
+</div>
+<p><br></p>
+<div class="admonition tip">
+<p class="admonition-title">The importance of open-source and community contribution</p>
+<p>By reporting issues and bugs we find in open-source code through github issues, we can effect real change. Developers are typically welcoming of bug reports that help improve their code and happy to help you to use their tool for your research. Other users of a tool may also chime in with their solutions, or you may want to add your helpful tips to an open issue!</p>
+</div>
+<h2 id="234-configuring-the-solution">2.3.4 Configuring the solution</h2>
+<p>The ticket describes a <a href="https://github.com/DaehwanKimLab/hisat2/releases/tag/v2.2.2">new release of Hisat2 v 2.2.2</a> that features a new parameter to prevent the <code>/tmp</code> error. </p>
+<p>To customise this version of the nf-core/rnaseq pipeline to use Hisat2, we will:</p>
+<ol>
+<li>Over-ride the default version of Hisat2 to use the latest version</li>
+<li>Add the new parameter to the Hisat2 process command</li>
+</ol>
+<h3 id="2341-running-with-multiple-custom-configuration-files">2.3.4.1 Running with multiple custom configuration files</h3>
+<p>Nextflow allows you to add as many configs as needed to customise a run. </p>
+<p>These can be supplied to the Nextflow parameter <code>-c</code> in a <strong>comma-delimited list</strong>, for example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>nextflow<span class="w"> </span>run<span class="w"> </span>&lt;pipeline&gt;<span class="w"> </span>&lt;other<span class="w"> </span>args&gt;<span class="w"> </span>-c<span class="w"> </span>custom-1.config,custom-2.config
+</code></pre></div>
+<p>Alternatively, <code>-c</code> can be included several times, for example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>nextflow<span class="w"> </span>run<span class="w"> </span>&lt;pipeline&gt;<span class="w"> </span>&lt;other<span class="w"> </span>args&gt;<span class="w"> </span>-c<span class="w"> </span>custom-1.config<span class="w"> </span>-c<span class="w"> </span>custom-2.config
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Custom config order matters!</p>
+<p>Recall from <a href="session_1/1.3_configure/#137-custom-configuration-files">Lesson 1.3.7</a> that <strong>order matters</strong>, with the right-most custom config files taking precedence.</p>
+<p>In the examples above, a configuration in <code>custom-2.config</code> would over-ride <code>custom-1.config</code> if both configured the same attribute.</p>
+</div>
+<p>Some configurations make sense being <strong>grouped together within a single config file</strong>, for example customising compute resources and software management within an institutional config. </p>
+<p>Others are best placed within <strong>individual and explicitly named configs</strong> to ensure they are only applied when needed (i.e., they are <strong>modular</strong>). </p>
+<p>As we learnt in <a href="../2.2_config/#2242-using-a-custom-configuration-profile">Lesson 2.2.4.2</a>, we can also group configuratons that apply to a certain environment or analysis within a <strong>custom <code>profile</code></strong>. Once we have tested and verified our Hisat2 customisation is working, we will incorporate it into our <code>workshop</code> custom profile.</p>
+<h3 id="2342-applying-a-custom-tool-version">2.3.4.2 Applying a custom tool version</h3>
+<p>Recall from <a href="../2.1_params/#2162-software-versions">Lesson 2.1.6.2</a> that all tool versions are included within the MultiQC report as well as a yaml file in the <code>pipeline_info</code> folder.  </p>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.4.1.1 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 3 mins</p>
+<p>Discover the version of Hisat2 used in our most recent run of nf-core/rnaseq.</p>
+<details class="success">
+<summary>Solution</summary>
+<p>Our run used Hisat2 version 2.2.1.</p>
+<ul>
+<li>Find using command-line:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>grep<span class="w"> </span>hisat2<span class="w"> </span>lesson-2.3-/pipeline_info/nf_core_rnaseq_software_mqc_versions.yml
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="go">hisat2: 2.2.1</span>
+</code></pre></div>
+<ul>
+<li>Find within MultiQC html report under 'Software Versions' sub-heading:</li>
+</ul>
+<p><img alt="" src="../../assets/2.3_hisat_version_mqc.png" /></p>
+</details>
+</div>
+<p><br></p>
+<p>We need Hisat2 version 2.2.2 for the new <code>--temp-dir</code> parameter. How should we apply this customisation to our our run?</p>
+<div class="admonition abstract">
+<p class="admonition-title">Poll 2.3.4.2</p>
+<p>For maintaining <strong>portability and reproducibility</strong>, what is the optimal method to apply our custom Hisat2 container to our pipeline run? </p>
+<p>a) Within the <code>nectar_vm.config</code> institutional config file. It's already working well on our platform, so we can build on it for further customisations without issue. </p>
+<p>b) Within a separate custom config file named <code>custom-hisat2.config</code>. We would then add it to any runs of nf-core/rnaseq that required this non-default workflow.</p>
+<p>c) Within the Hisat2 module <code>main.nf</code> file. This way, we don't need to worry about adding another custom config when we execute the <code>run</code> command. </p>
+<details class="success">
+<summary>Answer</summary>
+<p>b) Within a separate custom config file named <code>custom-hisat2.config</code>. This method is the most <strong>explicit</strong>, <strong>modular</strong>, <strong>portable</strong>, and <strong>reproducible</strong>. </p>
+<p>By placing it within a clearly named custom config file, there is less chance of unwittingly executing a workflow that does not match the expected utilisation of tools. Making it a separate config also means it can be easily dropped from our run when nf-core finalises their testing of the issue marked as 'WIP' and includes the resolution within the next version of rnaseq. </p>
+<p>Institutional configs are intended to be shareable with others using nf-core pipelines on the same infrastructure. Adding the custom tool over-ride to this file would prevent our institutional config from being portable to other analyses, so a) is incorrect. </p>
+<p>In general, editing the process <code>main.nf</code> file is <strong>not</strong> recommended, as this impedes reproducibility. Swapping out tool versions is a bespoke adaptation of the nf-core workflow that would harm reproducibility if it was inadvertently executed, which is likely to happen if it is hidden within the source code, making c) incorrect.  </p>
+</details>
+</div>
+<p><br></p>
+<p>To make the purpose of the config clear to anyone else in the lab who runs the pipeline, we will also include a descriptive comment explaining why the config is needed.</p>
+<div class="admonition note">
+<p class="admonition-title">Comments in Nextflow</p>
+<p>Commenting code is good practice to make the purpose and logic of the code easier for others and your future self to understand. </p>
+<p>Comments in Nextflow use <code>//</code> for single line comments or  <code>/* .. */</code> to comment a block on multiple lines.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.4.1.2 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 5 mins</p>
+<ul>
+<li>Create a new file called <code>custom-hisat2.config</code></li>
+<li>Add a Nextflow comment describing what the config does and why</li>
+<li>Identify the fully qualified process name/process execution path for the <code>HISAT2_ALIGN</code> process</li>
+<li>Within a <code>process</code> scope code block, provide the process name identified above to the appropriate process selector</li>
+<li>Within the process selector code block, add the path to the Hisat2 v 2.2.2 container described in the <a href="https://github.com/nf-core/modules/issues/9487">nf-core issue</a></li>
+</ul>
+<details class="hint">
+<summary>Hint: Process execution paths</summary>
+<p>You can obtain the process execution path from the execution trace, timeline or report files within <code>&lt;outdir&gt;/pipeline_info</code>. </p>
+<p>Process names are not always unique in nf-core pipelines that may contain modules from other sources. Best practice for specificity is to use the fully qualified process name, which typically takes the form:</p>
+<p><code>PIPELINE_NAME:WORKFLOW_NAME:SUBWORKFLOW_NAME:PROCESS_NAME</code>  </p>
+</details>
+<details class="hint">
+<summary>Hint: Process selectors</summary>
+<p>We learnt about process selectors in <a href="../2.2_config/#225-custom-resource-configuration-using-process-labels">Lesson 2.2.5</a> and <a href="../2.2_config/#226-custom-resource-configuration-using-process-names">Lesson 2.2.6</a></p>
+</details>
+<details class="hint">
+<summary>Hint: Syntax help</summary>
+<p>Our <code>nectar_vm.config</code> files contain <code>process</code> scope and process selector code blocks. Our hisat2 config will be more simple, not requiring the <code>profile</code> or <code>singularity</code> scopes we have within our Nectar institutional config.</p>
+</details>
+<details class="hint">
+<summary>Hint: Hisat2 v 2.2.2 container path</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/c3/c36472269e8898f63b7b65dd40433462d541f9e75f9401f0bf8488021275d006/data&#39;</span>
+</code></pre></div>
+</details>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><span class="filename">custom-hisat2.config</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// Custom config to apply latest Hisat2 v 2.2.2 to nf-core/rnaseq v 3.23.0</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1">// Required to add new Hisat2 --temp-directory parameter to resolve known issue</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1">// Hisat2 issue: https://github.com/DaehwanKimLab/hisat2/issues/438</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1">// nf-core issue: https://github.com/nf-core/modules/issues/9487</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1">//</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1">// This config should be dropped when running future nf-core/rnaseq versions that resolve the issue</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="n">process</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="nl">withName:</span><span class="w"> </span><span class="s2">&quot;NFCORE_RNASEQ:RNASEQ:FASTQ_ALIGN_HISAT2:HISAT2_ALIGN&quot;</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">        </span><span class="n">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/c3/c36472269e8898f63b7b65dd40433462d541f9e75f9401f0bf8488021275d006/data&#39;</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="o">}</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="o">}</span>
+</code></pre></div>
+</details>
+</div>
+<p><br></p>
+<div class="admonition warning">
+<p class="admonition-title">Use caution when customising tool versions</p>
+<p>Note that for deploying nf-core pipelines, it is generally <em>not recommended</em> to change the tool versions, as this will decrease portability and reproducibilty as well as being an untested pipeline.</p>
+<p>This exercise is to demonstrate how you can specify containers, as this may aid you in developing and testing your own Nextflow workflows or testing new tool versions. When a non-standard version of a tool is used for publishing nf-core pipeline results, this should be clearly stated within the methods section of the publication.  </p>
+</div>
+<h3 id="2343-adding-a-custom-tool-parameter">2.3.4.3 Adding a custom tool parameter</h3>
+<p>As introduced in <a href="../../session_1/1.3_configure/#configuring-processes">Lesson 1.3.6</a>, nf-core modules define an <code>ext.args</code> process directive that can be used to add any tool parameter to a process command. </p>
+<p>The utility of this directive is wide-reaching when you consider the number of optional parameters a typical bioinformatics tool may have. It is not feasible for nf-core to paramaterise all of these arguments...</p>
+<p><img alt="" src="../../assets/2.4_args_pie_chart.png" width="50%" /></p>
+<p>Extra convenience has been added for some commonly-used tools by wrapping the <code>ext.args</code> directive within an nf-core pipeline parameter, typically named <code>--extra_&lt;tool&gt;_args</code>. </p>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.4.2.1 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 2 mins</p>
+<ul>
+<li>Open the <a href="https://nf-co.re/rnaseq/3.23.0/parameters">nf-core/rnaseq parameters online guide</a> and check for any <code>--extra_&lt;tool&gt;_args</code> parameters</li>
+<li>Can you find a pipeline parameter to add extra arguments to the Hisat2 tool?</li>
+</ul>
+<details class="success">
+<summary>Solution</summary>
+<p>There is no such parameter for Hisat2. </p>
+<p>Included in version 3.23.0 of nf-core/rnaseq are:</p>
+<ul>
+<li><code>--extra_trimgalore_args</code></li>
+<li><code>--extra_fastp_args</code></li>
+<li><code>--extra_star_align_args</code></li>
+<li><code>--extra_bowtie2_align_args</code></li>
+<li><code>--extra_salmon_quant_args</code></li>
+<li><code>--extra_kallisto_quant_args</code></li>
+<li><code>--extra_fqlint_args</code></li>
+</ul>
+</details>
+</div>
+<p><br></p>
+<p>The <code>ext.args</code> directive typically forms part of all nf-core module code, even if the tool itself does not have an <code>extra_&lt;tool&gt;_args</code> parameter. This provision enables you to add <em>any</em> tool parameter to <em>any</em> nf-core pipeline tool with a <strong>custom configuration file</strong> that passes your parameter to the target module via <code>ext.args</code>.</p>
+<p>Let's see this in action!</p>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.4.2.2 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 3 mins</p>
+<ul>
+<li>Using the procedure described in <a href="../2.2_config/#222-default-nf-core-configuration">Exercise 2.2.2.3</a>, find the <code>main.nf</code> file for the HISAT2_ALIGN process:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>find<span class="w"> </span>./rnaseq<span class="w"> </span>-type<span class="w"> </span>d<span class="w">  </span>-name<span class="w"> </span><span class="s2">&quot;*hisat2*&quot;</span><span class="w"> </span>-print
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="go">./rnaseq/modules/nf-core/hisat2</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="go">./rnaseq/subworkflows/nf-core/fastq_align_hisat2</span>
+</code></pre></div>
+<p>The nf-core subworkflow named FASTQ_ALIGN_HISAT2 shows the module path for HISAT2_ALIGN as <code>modules/nf-core/hisat2/align/main.nf</code>. </p>
+<ul>
+<li>Open the file with <code>code modules/nf-core/hisat2/align/main.nf</code> file</li>
+<li>View the file to observe the Nextflow code that defines a variable called <code>args</code> and assigns it the contents of <code>ext.args</code></li>
+</ul>
+<p>If <code>ext.args</code> is empty (i.e. the run does not add any extra arguments to this tool), the <code>args</code> variable remains empty in the process script. If it has been provided to the run, <code>$args</code> will be expanded to the supplied custom argument in the process script:</p>
+<div class="highlight"><span class="filename">Lines 26-27 of rnaseq/modules/nf-core/hisat2/align/main.nf</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="mi">26</span><span class="w">      </span><span class="nl">script:</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="mi">27</span><span class="w">      </span><span class="kt">def</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">task</span><span class="o">.</span><span class="na">ext</span><span class="o">.</span><span class="na">args</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+</code></pre></div>
+<p>Further down, within the hisat2 command that is executed by the process, we can see the <code>$args</code> variable added to the hisat2 command:</p>
+<div class="highlight"><span class="filename">Lines 42-52 of rnaseq/modules/nf-core/hisat2/align/main.nf</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="m">42</span><span class="w">          </span>hisat2<span class="w"> </span><span class="se">\\</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="m">43</span><span class="w">              </span>-x<span class="w"> </span><span class="se">\$</span>INDEX<span class="w"> </span><span class="se">\\</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="m">44</span><span class="w">              </span>-U<span class="w"> </span><span class="nv">$reads</span><span class="w"> </span><span class="se">\\</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="m">45</span><span class="w">              </span><span class="nv">$strandedness</span><span class="w"> </span><span class="se">\\</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="m">46</span><span class="w">              </span><span class="nv">$ss</span><span class="w"> </span><span class="se">\\</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="m">47</span><span class="w">              </span>--summary-file<span class="w"> </span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.hisat2.summary.log<span class="w"> </span><span class="se">\\</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="m">48</span><span class="w">              </span>--threads<span class="w"> </span><span class="nv">$task</span>.cpus<span class="w"> </span><span class="se">\\</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="m">49</span><span class="w">              </span><span class="nv">$rg</span><span class="w"> </span><span class="se">\\</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="m">50</span><span class="w">              </span><span class="nv">$unaligned</span><span class="w"> </span><span class="se">\\</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="hll"><span class="m">51</span><span class="w">              </span><span class="nv">$args</span><span class="w"> </span><span class="se">\\</span>
+</span><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="m">52</span><span class="w">              </span><span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>view<span class="w"> </span>-bS<span class="w"> </span>-F<span class="w"> </span><span class="m">4</span><span class="w"> </span>-F<span class="w"> </span><span class="m">256</span><span class="w"> </span>-<span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>.bam
+</code></pre></div>
+</div>
+<p><br></p>
+<p>Now that we have verified that the pipeline soure code can accept our argument via <code>ext.args</code>, we will add it to our <code>custom-hisat2.config</code> file created in the previous lesson, and run our updated pipeline with <strong>multiple custom configuration files</strong>.</p>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.4.2.3 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 3 mins</p>
+<ul>
+<li>Provide <code>--temp-directory .</code> to the <code>ext.args</code> directive within the process selector code block of <code>custom-hisat2-version.config</code></li>
+<li>Update <code>run_rnaseq.sh</code> by adding <code>custom-hisat2.config</code> to the Nextflow <code>-c</code> parameter, and ensure the Nextflow <code>-resume</code> flag is applied</li>
+<li>Change <code>--outdir</code> to <code>lesson-2.3.4</code></li>
+<li>Save both scripts, then run the updated pipeline by entering the command <code>bash run_rnaseq.sh</code></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Paths inside containers</p>
+<p>When running tools with containers, the process is running <em>inside</em> the container, so the <code>.</code> path will evaluate to a location inside the container. </p>
+<p>In our case, this will ensure that the <code>tmp</code> directory used by each process will be <em>unique</em>, and avoid error-inducing clashes when multiple HISAT2_ALIGN processes attempt to write to the user's <code>/tmp</code> on the local machine. </p>
+</div>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><span class="filename">custom-hisat2.config</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">// Custom config to apply latest Hisat2 v 2.2.2 to nf-core/rnaseq v 3.23.0</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1">// Required to add new Hisat2 --temp-directory parameter to resolve known issue</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1">// Hisat2 issue: https://github.com/DaehwanKimLab/hisat2/issues/438</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1">// nf-core issue: https://github.com/nf-core/modules/issues/9487</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1">//</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="c1">// This config should be dropped when running future nf-core/rnaseq versions that resolve the issue</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="n">process</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">    </span><span class="nl">withName:</span><span class="w"> </span><span class="s2">&quot;NFCORE_RNASEQ:RNASEQ:FASTQ_ALIGN_HISAT2:HISAT2_ALIGN&quot;</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">        </span><span class="n">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/c3/c36472269e8898f63b7b65dd40433462d541f9e75f9401f0bf8488021275d006/data&#39;</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="hll"><span class="w">        </span><span class="n">ext</span><span class="o">.</span><span class="na">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;--temp-directory .&#39;</span>
+</span><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">    </span><span class="o">}</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="o">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">run_rnaseq.sh</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1"># parameters</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="nv">samplesheet</span><span class="o">=</span>~/data/samplesheet.csv
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="hll"><span class="nv">output_directory</span><span class="o">=</span>lesson-2.3.4
+</span><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nv">ref_fasta</span><span class="o">=</span>~/data/mm10_reference/mm10_chr18.fa
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="nv">ref_gtf</span><span class="o">=</span>~/data/mm10_reference/mm10_chr18.gtf
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="nv">star_index</span><span class="o">=</span>~/data/mm10_reference/STAR
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="nv">salmon_index</span><span class="o">=</span>~/data/mm10_reference/salmon-index
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="c1"># configurations</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="nv">profile</span><span class="o">=</span>workshop
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="nv">config</span><span class="o">=</span>workshop_profile.config
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="hll"><span class="nv">hisat2</span><span class="o">=</span>custom-hisat2.config
+</span><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>nextflow<span class="w"> </span>run<span class="w"> </span>rnaseq/main.nf<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="w">    </span>--input<span class="w"> </span><span class="si">${</span><span class="nv">samplesheet</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="w">    </span>--outdir<span class="w"> </span><span class="si">${</span><span class="nv">output_directory</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="w">    </span>--fasta<span class="w"> </span><span class="si">${</span><span class="nv">ref_fasta</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="w">    </span>--gtf<span class="w"> </span><span class="si">${</span><span class="nv">ref_gtf</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="w">    </span>--star_index<span class="w"> </span><span class="si">${</span><span class="nv">star_index</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="w">    </span>--salmon_index<span class="w"> </span><span class="si">${</span><span class="nv">salmon_index</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="w">    </span>--skip_markduplicates<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="w">    </span>--save_trimmed<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a><span class="w">    </span>--save_unaligned<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a><span class="w">    </span>--aligner<span class="w"> </span>hisat2<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a><span class="w">    </span>-profile<span class="w"> </span><span class="si">${</span><span class="nv">profile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a><span class="hll"><span class="w">    </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">config</span><span class="si">}</span>,<span class="si">${</span><span class="nv">hisat2</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+</span><a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a><span class="hll"><span class="w">    </span>-resume
+</span></code></pre></div>
+</details>
+</div>
+<p>🤞 Hopefully your run now completes without error!</p>
+<h3 id="2345-verifying-customisations">2.3.4.5 Verifying customisations</h3>
+<p>In some cases, the successful application of customisations to a run are self-evident in the pipeline outputs. In other cases, they may not be, and you may want to perform verification. </p>
+<p>In this scenario, the error only occurs if more than one Hisat2 process runs at the same time, which is why your initial Hisat2 run may or may not have encountered an error. </p>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.4.5.1 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 5 mins</p>
+<p>Check that the custom version 2.2.2 of hisat2 was run.</p>
+<details class="hint">
+<summary>Hint</summary>
+<p>Recall from <a href="../2.1_params/#2162-software-versions">Lesson 2.1.6.2</a> that all tool versions are included within the MultiQC report as well as a yaml file in the <code>pipeline_info</code> folder. </p>
+</details>
+<details class="success">
+<summary>Solution</summary>
+<p>By viewing the <code>Software Versions</code> heading in the MultiQC report:</p>
+<p><img alt="" src="../../assets/2.3.4_hisat2_version.png" width="85%" /></p>
+<p>Or using the yaml file in the <code>pipeline_info</code> folder:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>grep<span class="w"> </span>-i<span class="w"> </span>hisat<span class="w"> </span>lesson-2.3.4/pipeline_info/nf_core_rnaseq_software_mqc_versions.yml
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="hll"><span class="go">HISAT2_ALIGN:</span>
+</span><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="hll"><span class="go">hisat2: 2.2.2</span>
+</span><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="go">HISAT2_BUILD:</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="go">hisat2: 2.2.1</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="go">HISAT2_EXTRACTSPLICESITES:</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="go">hisat2: 2.2.1</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.4.5.2 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 5 mins</p>
+<ul>
+<li>Check that the custom parameter <code>--temp-directory .</code> was applied to the HISAT2_ALIGN process command</li>
+</ul>
+<details class="hint">
+<summary>Hint</summary>
+<p>Finding the <code>.command.sh</code> for a process within the process work directory using <code>nextflow log</code> was practised in <a href="../2.1_params/#213-checking-execution-at-the-process-level">Exercise 2.1.3</a>.</p>
+</details>
+<details class="success">
+<summary>Solution</summary>
+<ul>
+<li>Check that the custom parameter <code>--temp-directory .</code> was applied to the HISAT2_ALIGN process command:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>nextflow<span class="w"> </span>log<span class="w">  </span>&lt;run_name&gt;<span class="w"> </span>-f<span class="w"> </span>workdir,name<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>HISAT2_ALIGN
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>cat<span class="w"> </span>&lt;workdir&gt;/.command.sh
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="go">hisat2 \</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="go">    -x $INDEX \</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="go">    -U SRR3473989_trimmed_trimmed.fq.gz \</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="go">    \</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="go">    --known-splicesite-infile mm10_chr18.filtered.splice_sites.txt \</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="go">    --summary-file SRR3473989.hisat2.summary.log \</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="go">    --threads 2 \</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="go">    --rg-id SRR3473989 --rg SM:SRR3473989 \</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="go">    --un-gz SRR3473989.unmapped.fastq.gz \</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="hll"><span class="go">    --temp-directory . \</span>
+</span><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="go">    | samtools view -bS -F 4 -F 256 - &gt; SRR3473989.bam</span>
+</code></pre></div>
+<p>👍 HISAT2_ALIGN is using the custom version and custom parameter to resolve our issue. </p>
+</details>
+</div>
+<h3 id="2346-customisation-specificity">2.3.4.6 Customisation specificity</h3>
+<p>HISAT2_ALIGN has used our custom container version, but not the other Hisat2 modules within the rnaseq pipeline. <strong>Version consistency</strong> within data analysis is crucial for preventing potential version conflicts in execution or outputs, as well as reproducibility.</p>
+<p>To apply the custom container version to all Hisat2 tools in the pipeline while restricting the <code>ext.args</code> application to where it is valid, we could utilise wildcards (*) with <code>withName</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.4.6 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 5 mins</p>
+<ul>
+<li>Adjust <code>custom-hisat2.config</code> to the following:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">process</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="nl">withName:</span><span class="w"> </span><span class="s">/.*HISAT2.*/</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">        </span><span class="n">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/c3/c36472269e8898f63b7b65dd40433462d541f9e75f9401f0bf8488021275d006/data&#39;</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">    </span><span class="o">}</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">    </span><span class="nl">withName:</span><span class="w"> </span><span class="s2">&quot;NFCORE_RNASEQ:RNASEQ:FASTQ_ALIGN_HISAT2:HISAT2_ALIGN&quot;</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">        </span><span class="n">ext</span><span class="o">.</span><span class="na">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;--temp-directory .&#39;</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">    </span><span class="o">}</span><span class="w">    </span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="o">}</span>
+</code></pre></div>
+<ul>
+<li>Save the config, then run the updated pipeline with <code>bash run_rnaseq.sh</code></li>
+<li>Check the tool version for other Hisat2 processes (HISAT2_BUILD, HISAT2_EXTRACTSPLICESITES) using either of the methods shown in Exercise 2.3.4.5.1</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Solution</p>
+</div>
+<p>TODO</p>
+</div>
+<h2 id="235-customising-resource-tracing">2.3.5 Customising resource tracing</h2>
+<p>As observed in <a href="2.2_config/#2251-viewing-resources-used">Lesson 2.2.5.1</a>, the <code>pipeline_info</code> html report file shows resources used in graphical form. A text file that is easily parsed for example using R or Python can be more flexible in meeting custom reporting needs, for example making plots of resource usage.</p>
+<p>The nf-core <code>pipeline_info</code> <a href="https://docs.seqera.io/nextflow/reports#trace-file">trace file</a>, printed to the pipeline output directory by default, is a plain tab-delimited file that contains key details about processes. There are a number of other <a href="https://docs.seqera.io/nextflow/reference/config#tracefields">available fields</a>, and the trace file can be customised to include any combination of fields using a custom configuration file.</p>
+<p>The <code>rnaseq/nextflow.config</code> file enables the <code>trace</code> option and sets a unqiue filename using date and timestamp:</p>
+<div class="highlight"><span class="filename">Lines 140 and 362-365 of rnaseq/nextflow.config</span><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="w">   </span><span class="mi">140</span><span class="w">      </span><span class="n">trace_report_suffix</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span><span class="o">().</span><span class="na">format</span><span class="o">(</span><span class="w"> </span><span class="s1">&#39;yyyy-MM-dd_HH-mm-ss&#39;</span><span class="o">)</span><span class="w"> </span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">   </span><span class="mi">362</span><span class="w">  </span><span class="n">trace</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">   </span><span class="mi">363</span><span class="w">      </span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">   </span><span class="mi">364</span><span class="w">      </span><span class="n">file</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${params.outdir}/pipeline_info/execution_trace_${params.trace_report_suffix}.txt&quot;</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">   </span><span class="mi">365</span><span class="w">  </span><span class="o">}</span>
+</code></pre></div>
+<p>Note that the <code>trace.fields</code> option is absent, meaning nf-core is using the default fields for Nextflow <code>trace</code>. To discover the default fields when <code>trace</code> is enabled, view the fields included in the example <a href="https://docs.seqera.io/nextflow/reports#trace-file">trace file</a>, or the <code>pipeline_info/execution_trace_&lt;date&gt;_&lt;time&gt;.txt</code> from one of your completed runs from this session. </p>
+<p>There is no <code>trace</code> option that allows <em>adding</em> fields to the default, but we can <em>over-ride</em> the default fields with our custom fields using the <code>trace.fields</code> option within a custom configuration file. </p>
+<div class="admonition info">
+<p class="admonition-title">Nextflow log fields vs trace fields</p>
+<p>Recall the <code>nextflow log -l</code> command introduced in <a href="../../session_1/1.2_run/#125-nextflow-log">Lesson 1.2.5</a>.</p>
+<p>The fields printed by <code>nextflow log -l</code> and their meanings are identical to the fields available to <code>trace.fields</code> with an <strong>important exception</strong>. Since the <code>%</code> symbol is a special character, <code>%cpu</code> and <code>%mem</code> as described for Nextflow <code>trace</code> correspond to <code>pcpu</code> and <code>pmem</code> for the <code>nextflow log -f</code> command-line utility.  </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.5.1 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 5 mins</p>
+<p>To assess whether our customisations have met the goal of increased analysis speed, we would like to plot run time and compute usage of our custom Hisat2 pipeline to the default STAR pipeline. </p>
+<p>For our plots, we need to gather per-process metrics on walltime, CPUs requested and percentage used, memory requested and percentage used. </p>
+<ul>
+<li>View the <a href="https://docs.seqera.io/nextflow/reference/config#tracefields">available trace fields</a> and identify the names of the fields we need</li>
+<li>Check which fields are included in the default trace file and identify any from our list that are not included</li>
+<li>Create a new custom configuration file called <code>custom-trace.config</code>, add a descriptive comment, and add a <code>trace</code> scope code block</li>
+<li>Within the <code>trace</code> scope, provide a comma-separated list of fields to include to the <code>fields</code> option of trace<ul>
+<li>You can choose whether to list all default fields plus our custom fields, or a shorter list including just the fields we want to plot</li>
+<li>If you choose a shorter list of fields, include the <code>name</code> field to identify which processes the resource metrics apply to</li>
+<li>Your list should be enclosed in quotes, eg <code>fields = 'field1,field2'</code></li>
+</ul>
+</li>
+</ul>
+<details class="succes">
+<summary>Solution</summary>
+<p>The field names we need are:</p>
+<div class="highlight"><pre><span></span><code>- `cpus`
+- `%cpu`
+- `memory`
+- `%mem`
+- `realtime`
+</code></pre></div>
+<p>Of these, the following are included in the nf-core/rnaseq trace file by default:</p>
+<div class="highlight"><pre><span></span><code>- `%cpu`
+- `realtime`
+</code></pre></div>
+<p>The custom fields we need to add are:</p>
+<div class="highlight"><pre><span></span><code>- `cpus`
+- `memory`
+- `%mem`
+</code></pre></div>
+<div class="highlight"><span class="filename">custom-trace.config with all default plus custom fields</span><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1">// Custom config to add CPUs requested, memory requested, and % memory used to default nf-core trace</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="n">trace</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">    </span><span class="n">fields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;task_id,hash,native_id,name,status,exit,submit,duration,realtime,%cpu,peak_rss,peak_vmem,rchar,wchar,cpus,memory,%mem&#39;</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="o">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">custom-trace.config with minimum fields for resource plots</span><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1">// Custom config for minimal time, cpu and memory tracing</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="n">trace</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">    </span><span class="n">fields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;name,realtime,cpus,%cpu,memory,%mem&#39;</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="o">}</span>
+</code></pre></div>
+</details>
+</div>
+<p><br></p>
+<p>The next step is to add the new config to our run. The <code>-c</code> config list is growing rather long:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>-c<span class="w"> </span>workshop_profile.config,custom-hisat2-version.config,custom-trace.config
+</code></pre></div>
+<p>Each config is a discrete set of customisations matching a specific purpose - they are <strong>modular</strong> and <strong>portable</strong> - yet each of them are required for the specific application of running this non-standard run on these VMs. It makes sense then to <strong>logically group these configs</strong> under our <code>workshop</code> <strong>profile</strong>. </p>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.5.2 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 8 mins</p>
+<ul>
+<li>Open <code>workshop_profile.config</code></li>
+<li>Under the <code>workshop</code> profile, add <code>custom-trace.config</code> using the <code>includeConfig</code> option</li>
+<li>Now we have tested and verified the new Hisat2 pipeline and issue-solving config, it makes sense to group it under the profile <ul>
+<li>Add <code>custom-hisat2.config</code> to the <code>workshop</code> profile using the <code>includeConfig</code> option</li>
+<li>Update <code>run_rnaseq.sh</code> by removing <code>custom-hisat2.config</code> from the Nextflow <code>-c</code> parameter </li>
+</ul>
+</li>
+<li>Within <code>run_rnaseq.sh</code>, change <code>--outdir</code> to <code>lesson-2.3.5</code></li>
+<li>Save both scripts, then run the updated pipeline by entering the command <code>bash run_rnaseq.sh</code></li>
+</ul>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><span class="filename">workshop_profile.config</span><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">profiles</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="n">workshop</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">        </span><span class="n">includeConfig</span><span class="w"> </span><span class="s1">&#39;nectar_vm.config&#39;</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="hll"><span class="w">        </span><span class="n">includeConfig</span><span class="w"> </span><span class="s1">&#39;custom-trace.config&#39;</span>
+</span><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="hll"><span class="w">        </span><span class="n">includeConfig</span><span class="w"> </span><span class="s1">&#39;custom-hisat2.config&#39;</span>
+</span><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">    </span><span class="o">}</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="o">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">run_rnaseq.sh</span><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="c1"># parameters</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="nv">samplesheet</span><span class="o">=</span>~/data/samplesheet.csv
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="hll"><span class="nv">output_directory</span><span class="o">=</span>lesson-2.3.5
+</span><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="nv">ref_fasta</span><span class="o">=</span>~/data/mm10_reference/mm10_chr18.fa
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="nv">ref_gtf</span><span class="o">=</span>~/data/mm10_reference/mm10_chr18.gtf
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="nv">star_index</span><span class="o">=</span>~/data/mm10_reference/STAR
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="nv">salmon_index</span><span class="o">=</span>~/data/mm10_reference/salmon-index
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="c1"># configurations</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="nv">profile</span><span class="o">=</span>workshop
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a><span class="nv">config</span><span class="o">=</span>workshop_profile.config
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>nextflow<span class="w"> </span>run<span class="w"> </span>rnaseq/main.nf<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="w">    </span>--input<span class="w"> </span><span class="si">${</span><span class="nv">samplesheet</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="w">    </span>--outdir<span class="w"> </span><span class="si">${</span><span class="nv">output_directory</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a><span class="w">    </span>--fasta<span class="w"> </span><span class="si">${</span><span class="nv">ref_fasta</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a><span class="w">    </span>--gtf<span class="w"> </span><span class="si">${</span><span class="nv">ref_gtf</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a><span class="w">    </span>--star_index<span class="w"> </span><span class="si">${</span><span class="nv">star_index</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a><span class="w">    </span>--salmon_index<span class="w"> </span><span class="si">${</span><span class="nv">salmon_index</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a><span class="w">    </span>--skip_markduplicates<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a><span class="w">    </span>--save_trimmed<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a><span class="w">    </span>--save_unaligned<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a><span class="w">    </span>-profile<span class="w"> </span><span class="si">${</span><span class="nv">profile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a><span class="hll"><span class="w">    </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">config</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+</span><a id="__codelineno-27-27" name="__codelineno-27-27" href="#__codelineno-27-27"></a><span class="w">    </span>-resume
+</code></pre></div>
+</details>
+</div>
+<p><br>
+Does the new resource trace file meet our plotting needs?</p>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.5.3 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 1 min</p>
+<ul>
+<li>Open the file <code>lesson-2.3.5/pipeline_info/execution_trace_&lt;date&gt;_&lt;time&gt;.txt</code> by double clicking it in the VS Code explorer pane</li>
+<li>Check that the custom fields you have specified have been applied</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tracing cached processes</p>
+<p>For processes with status <code>CACHED</code>, the resources reported in the trace file (as well as other <code>pipeline_info</code> files) are from the <em>actual</em> compute required to execute the process, and not the time this execution took to restore the data from cache. Keeping all the usage details together whether or not tasks were cached simplifies reviewing and reporting compute usage. </p>
+</div>
+</div>
+<p><br></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When you launch a run with custom configuration files, these will be printed in the launch log as your run starts, as well as documented in the <code>Nextflow command</code> section of the Nextflow workflow report. </p>
+<p>Configuration files that are included within a <code>profile</code> are <strong><em>not</em></strong> lsited in this way, only the <code>profile</code> itself is listed. </p>
+<p>This makes it crucial that you <strong>save your custom configuration files</strong> along with with pipeline outputs to ensure <strong>reproducibility and portability</strong> of your custom analysis.   </p>
+</div>
+<h2 id="236-personalise-multiqc-reports">2.3.6 Personalise MultiQC reports</h2>
+<p>Many nf-core pipelines use <a href="https://multiqc.info/docs/">MultiQC</a> to aggregate results and statistics output by various bioinformatics tools, helping to summarise experiments containing multiple samples and multiple analysis steps. Recall that we used the MultiQC report to debug the strandedness error in <a href="../2.1_params/#214-resolve-a-pipeline-warning-with-a-parameter">Lesson 2.1.4</a>. </p>
+<p>MultiQC reports can be <a href="https://docs.seqera.io/multiqc/reports/customisation">customised</a> on the MultiQC command line or within a yaml-formatted MultiQC configuration file. nf-core has enabled this functionality with the <a href="https://nf-co.re/rnaseq/3.23.0/parameters#multiqc_config"><code>--multiqc_config</code> parameter</a>, which takes a the yaml-formatted MultiQC configuration file and applies all included MultiQC parameters to the MultiQC process command.</p>
+<div class="admonition important">
+<p class="admonition-title">Hidden nf-core parameters</p>
+<p>The <code>--multiqc_config</code> parameter is a <strong>hidden parameter!</strong> To see this parameter, you need to apply <code>--showHidden</code> on the command line help, or select <strong>'Show hidden'</strong> on the lower right hand side of the nf-core parameters webpage. </p>
+</div>
+<p><br></p>
+<p>To polish up our presentation at the next mouse project meeting, we want to add some custom detail to the MultiQC report. We will create a custom MultiQC config to:</p>
+<ul>
+<li>Add a custom report header and title</li>
+<li>Overlay a <a href="https://multiqc.info/modules/fastqc/#theoretical-gc-content">theoretical GC content track</a> specific for our mouse reference genome</li>
+</ul>
+<p>These are just two examples of the many <a href="https://docs.seqera.io/multiqc/reports/customisation">MultiQC configurations available</a>. </p>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.6.1 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 3 mins</p>
+<ul>
+<li>Create a new file named <code>custom-multiqc.yaml</code></li>
+<li>Under the <code>report_header_info</code> config option, add a <a href="https://docs.seqera.io/multiqc/reports/customisation#project-level-information">custom report header</a><ul>
+<li>You can add any details you choose under <code>report_header_info</code>, as long as they conform to the yaml key:value pairs format </li>
+</ul>
+</li>
+<li>Under the <code>fastqc_config</code> option, specify <a href="https://docs.seqera.io/multiqc/modules/fastqc/#theoretical-gc-content"><code>fastqc_theoretical_gc</code></a> as the yaml key and <code>mm10_txome</code> (mouse transcriptome) as the yaml value</li>
+<li>Give your MultiQC report file a <a href="https://docs.seqera.io/multiqc/getting_started/running_multiqc#renaming-reports">descriptive filename</a> using the <code>filename</code> config option</li>
+<li>Add some <a href="https://docs.seqera.io/multiqc/reports/customisation#titles-and-introductory-text">titles and introductory text</a> if desired</li>
+<li>Save the file</li>
+</ul>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><span class="filename">Example custom-multiqc.yaml</span><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Big</span><span class="nv"> </span><span class="s">Mouse</span><span class="nv"> </span><span class="s">Project&quot;</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Big_Mouse_Project_phase1_groupA_rnaseq_QCreport.html</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="nt">subtitle</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Project</span><span class="nv"> </span><span class="s">phase</span><span class="nv"> </span><span class="s">1:</span><span class="nv"> </span><span class="s">genes</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">off&quot;</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="nt">intro_text</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1000</span><span class="nv"> </span><span class="s">mouse</span><span class="nv"> </span><span class="s">samples</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">phase</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">gene</span><span class="nv"> </span><span class="s">expression</span><span class="nv"> </span><span class="s">results&quot;</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="nt">report_header_info</span><span class="p">:</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Contact E-mail</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my.email@biglab.edu.au&quot;</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Application Type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;RNA-seq&quot;</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Project Phase</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Phase</span><span class="nv"> </span><span class="s">1&quot;</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Sample group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Group</span><span class="nv"> </span><span class="s">A:</span><span class="nv"> </span><span class="s">treated&quot;</span>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="nt">fastqc_config</span><span class="p">:</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="w">    </span><span class="nt">fastqc_theoretical_gc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mm10_txome&quot;</span>
+</code></pre></div>
+</details>
+</div>
+<p><br></p>
+<p>You may be expecting to add this configuration file at the Nextflow <code>-c</code> parameter in your run command. In this case, we <em>do not</em> add the configuration at <code>-c</code>! </p>
+<p>This configuration is a yaml-formatted file matching the input format expected by the tool MultiQC, and not a Nextflow configuration file. nf-core/rnaseq includes the <strong>pipeline parameter</strong> <a href="https://nf-co.re/rnaseq/3.23.0/parameters#multiqc_config"><code>--multiqc_config</code></a> so we can add this particular configuration as we would any other pipeline parameter. </p>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.6.2 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 3 mins</p>
+<ul>
+<li>Add the MultiQC yaml file to your run command in <code>run_rnaseq.sh</code> </li>
+<li>Update the <code>--outdir</code> to lesson-2.3.6</li>
+<li>Save your run script, then run the updated pipeline by entering the command <code>bash run_rnaseq.sh</code></li>
+</ul>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><span class="filename">run_rnaseq.sh</span><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="c1"># parameters</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="nv">samplesheet</span><span class="o">=</span>~/data/samplesheet.csv
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="hll"><span class="nv">output_directory</span><span class="o">=</span>lesson-2.3.6
+</span><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="nv">ref_fasta</span><span class="o">=</span>~/data/mm10_reference/mm10_chr18.fa
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="nv">ref_gtf</span><span class="o">=</span>~/data/mm10_reference/mm10_chr18.gtf
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="nv">star_index</span><span class="o">=</span>~/data/mm10_reference/STAR
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="nv">salmon_index</span><span class="o">=</span>~/data/mm10_reference/salmon-index
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="hll"><span class="c1"># custom multiqc</span>
+</span><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="hll"><span class="nv">multiqc</span><span class="o">=</span>custom-multiqc.yaml
+</span><a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="c1"># configurations</span>
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a><span class="nv">profile</span><span class="o">=</span>workshop
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="nv">config</span><span class="o">=</span>workshop_profile.config
+<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a>
+<a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a>nextflow<span class="w"> </span>run<span class="w"> </span>rnaseq/main.nf<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a><span class="w">    </span>--input<span class="w"> </span><span class="si">${</span><span class="nv">samplesheet</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a><span class="w">    </span>--outdir<span class="w"> </span><span class="si">${</span><span class="nv">output_directory</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a><span class="w">    </span>--fasta<span class="w"> </span><span class="si">${</span><span class="nv">ref_fasta</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a><span class="w">    </span>--gtf<span class="w"> </span><span class="si">${</span><span class="nv">ref_gtf</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a><span class="w">    </span>--star_index<span class="w"> </span><span class="si">${</span><span class="nv">star_index</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-24" name="__codelineno-29-24" href="#__codelineno-29-24"></a><span class="w">    </span>--salmon_index<span class="w"> </span><span class="si">${</span><span class="nv">salmon_index</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-25" name="__codelineno-29-25" href="#__codelineno-29-25"></a><span class="w">    </span>--skip_markduplicates<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-26" name="__codelineno-29-26" href="#__codelineno-29-26"></a><span class="w">    </span>--save_trimmed<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-27" name="__codelineno-29-27" href="#__codelineno-29-27"></a><span class="w">    </span>--save_unaligned<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-28" name="__codelineno-29-28" href="#__codelineno-29-28"></a><span class="hll"><span class="w">    </span>--multiqc_config<span class="w"> </span><span class="si">${</span><span class="nv">multiqc</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+</span><a id="__codelineno-29-29" name="__codelineno-29-29" href="#__codelineno-29-29"></a><span class="w">    </span>-profile<span class="w"> </span><span class="si">${</span><span class="nv">profile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-30" name="__codelineno-29-30" href="#__codelineno-29-30"></a><span class="w">    </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">config</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-31" name="__codelineno-29-31" href="#__codelineno-29-31"></a><span class="w">    </span>-resume
+</code></pre></div>
+</details>
+</div>
+<p><br></p>
+<p>Does the MultiQC report have the intended customisations?</p>
+<div class="admonition example">
+<p class="admonition-title">Exercise 2.3.6.3 <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/23f1.svg" title=":stopwatch:" /> 3 mins</p>
+<ul>
+<li>Once your run has completed, right-click on <code>lesson-2.3.6/multiqc/hisat2/&lt;custom-title&gt;.html</code> and select 'Open with Live Server'<ul>
+<li>Notice your customisations in the header section of the report, for example:</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../../assets/2.4_multiqc_custom_header.png" width="85%" /> </p>
+<p><br></p>
+<ul>
+<li>Navigate to the section titled <strong>FastQC: Per Sequence GC Content</strong> and check that the custom track has been successfully added </li>
+</ul>
+<p><img alt="" src="../../assets/2.4_MultiQC.png" width="85%" /> </p>
+<p><img alt="👀" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f440.svg" title=":eyes:" /> The custom GC track supports that our sample transcriptomes follow a normal distribution consistent with the mm10 reference. </p>
+</div>
+<p><br>
+💃🏽🕺🏻 <span style="color: darkblue;">The mouse project data is analysed in time to meet the deadline and our colleagues are impressed by the fancy MultiQC report! </span></p>
+<h2 id="237-workshop-key-points">2.3.7 Workshop key points</h2>
+<div class="admonition note">
+<p class="admonition-title">Key points from Session 1 and Session 2</p>
+<ul>
+<li><strong>nf-core is a curated set of analysis workflows</strong> built using the <strong>workflow language Nextflow</strong></li>
+<li>There are <strong>active community platforms</strong> you can join for nf-core and Nextflow to ask questions and stay up to date with the latest activities and announcements</li>
+<li>Understanding how to <strong>customise nf-core workflows</strong> through <strong>pipeline parameters</strong> and <strong>configuration files</strong> enables you to adapt nf-core pipelines to real-world analysis situations</li>
+<li>Understanding the <strong>priority order</strong> in which configuration and pipeline parameters and configuration files are applied helps you ensure your runs receive the instructions intended</li>
+<li>Understanding Nextflow configuration and execution can help you <strong>troubleshoot a run</strong></li>
+<li>Customisations to <strong>what is run</strong> are controlled by nf-core pipeline parameters as well as configurations targeting specific processes using the <code>process</code> scope and process selectors</li>
+<li><strong>Custom tool parameters</strong> that are not covered by an nf-core pipeline parameter can be applied to a run using <strong><code>ext.args</code></strong> within the <code>process</code> scope</li>
+<li>Customisations to <strong>how the run executes on your machine</strong> are controlled by custom configuration files</li>
+<li>Customised <strong>resource tracing</strong> is enabled within custom configuration files using the <code>trace</code> scope</li>
+<li><strong>Multiple configurations</strong> can be applied to a run using <code>-c</code> and/or custom <code>profiles</code></li>
+<li>Appropriate custom config use provides <strong>modularity, portability and reproducibility</strong> to nf-core workflows</li>
+<li>All configs and run scripts should be <strong>backed up alongside pipeline results</strong></li>
+<li><img alt="📖" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4d6.svg" title=":book:" /> nf-core pipelines have comprehensive documentation describing usage, parameters, outputs, and interpreting results. <strong>Always consult the docs before running and customising a pipeline!</strong></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../2.2_config/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2.2 Nextflow configuration files">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                2.2 Nextflow configuration files
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../tips_tricks/" class="md-footer__link md-footer__link--next" aria-label="Next: Tips &amp; tricks">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Tips & tricks
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
