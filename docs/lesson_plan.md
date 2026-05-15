@@ -12,7 +12,7 @@ These sessions will provide you with an opportunity to develop your skills and g
 | | Introduction to nf-core and Nextflow | Understand core features of nf-core and Nextflow. | 40 |
 | | Running nf-core workflows | Learn how to pull Nextflow and nf-core pipelines from GitHub, how to run them, and how to inspect the Nextflow logs. | 15 |
 | | Break | :coffee: | 10 |
-| | Configuring nf-core workflows | Understand how Nextflow is configured, how to write configuration files, and how to use Nextflow parameters to modify the run. | 40 |
+| | Configuring nf-core workflows | Understand how Nextflow is configured, how to write configuration files, and how to use parameters to modify the run. | 40 |
 | | Break | :coffee: | 10 |
 | | Introduction to nf-core/rnaseq | Learn about nf-core/rnaseq and build a run command using required and optional parameters. | 30 |
 | | | | |
