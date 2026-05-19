@@ -2,7 +2,7 @@
 
 ## Customising workflows for your research
 
-This workshop will provide you with the foundational knowledge required to run and customise nf-core workflows in a reproducible manner. The content is broken up into 2 half-day sessions. In the first session we will cover the basic principles of running nf-core pipelines. Then, in the second session we will step through various customisation scenarios using the [nf-core/rnaseq](https://nf-co.re/rnaseq/3.23.0) pipeline. We will explore ways to adjust the workflow parameters based on the needs of your dataset and configuration the workflow to run on your computational environment. See the [lesson plan](./lesson_plan.md) for details.
+This workshop will provide you with the foundational knowledge required to run and customise nf-core pipelines in a reproducible manner. The content is broken up into 2 half-day sessions. In the first session we will cover the basic principles of running nf-core pipelines. Then, in the second session we will step through various customisation scenarios using the [nf-core/rnaseq](https://nf-co.re/rnaseq/3.23.0) pipeline. We will explore ways to adjust the pipeline parameters based on the needs of your dataset and configuring the workflow to run on your computational environment. See the [lesson plan](./lesson_plan.md) for details.
 
 ## Trainers
 

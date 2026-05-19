@@ -80,7 +80,7 @@ The nf-core `launch` command takes one argument - either the name of an nf-core 
 nf-core launch nf-core/<workflow>
 ```
 
-When running this command, you will first be asked about which version of the workflow you would like to execute. Next, you will be given the choice between a web-based graphical interface or an interactive command-line wizard tool to enter the workflow parameters. Both interfaces show documentation alongside each parameter, will generate a run ID, and will validate your inputs.
+When running this command, you will first be asked about which version of the workflow you would like to execute. Next, you will be given the choice between a web-based graphical interface or an interactive command-line wizard tool to enter the pipeline parameters. Both interfaces show documentation alongside each parameter, will generate a run ID, and will validate your inputs.
 
 ![](./assets/0.0_wizard.excalidraw.png){width=100%}
 
