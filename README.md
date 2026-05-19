@@ -1,45 +1,56 @@
-# template-mkdocs
+# Unlocking nf-core
 
-## Setup
+## Customising workflows for your research
 
-- Create new repository using this as a template
+These are the training materials for the 2026 workshop *Unlocking nf-core: customising workflows for your research*, developed and presented by Sydney Informatics Hub and Australian BioCommons.
 
-- In the cloned repository: Settings -> Pages -> Build and deployment:
+This workshop is designed for researchers and technical users (e.g. bioinformaticians, life scientists, and data scientists) who are interested in learning more about running and configuring nf-core workflows for their research.
 
-    - Source: Deploy from a branch
-    - Branch: `gh-pages`
-    - Folder: `/ (root)`
+### Pre-requisites
 
-- Set up `mkdocs` locally
+- Experience working in a Linux-based command-line environment and basic command-line skills, including writing scripts and running tools
+- (Recommended): Experience working with containers (e.g. Singularity and Docker)
+    - For a general overview on containers, you can view the Pawsey Supercomputing Centre training courses:
+        - [Webinar series on containers](https://www.youtube.com/playlist?list=PLmu61dgAX-abfDjX1gugQh60AJRIpDrVz)
+        - [Containers in HPC](https://pawseysc.github.io/sc19-containers/01-containers-intro/index.html)
+- (Recommended): Experience working with Nextflow
+    - For an introduction to the fundamentals of Nextflow, you can view our other workshops:
+        - [Nextflow for the Life Sciences](https://sydney-informatics-hub.github.io/hello-nextflow-2025/)
+        - [Nextflow for HPC](https://sydney-informatics-hub.github.io/nextflow-hpc-workshop/)
 
-Using `mamba`:
+### Learning objectives
+
+By the end of the workshop you should be able to:
+
+- Explain the roles of  Nextflow and nf-core in enabling reproducible and portable bioinformatics
+- Navigate thee nf-core directory structure to identify key configuration files
+- Write and run a basic nf-core run command
+- Modify command-line arguments to customise the workflow
+- Describe Nextflow configuration hierarchy
+- Create and use a params file to customise workflow parameters
+- Create and use a custom config file to adjust resource usage
+- Apply external arguments not available as a workflow parameter to a process
+
+### For developers
+
+To render the documents locally:
+
+1. Install [`uv`](https://docs.astral.sh/uv/):
 
 ```bash
-mamba create -n mkdocs -c conda-forge mkdocs-material
-mamba activate mkdocs
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-```console
-.
-├── docs # all contents for pages here
-│   ├── assets
-│   │   └── usyd-logo.png
-│   ├── extra.css # usyd styling
-│   └── index.md # home page
-├── .github # GH action to auto publish when pushed to main
-│   └── workflows
-│       └── mkdocs_deploy.yml
-├── mkdocs.yml # config for extensions, contents/navbar, etc.
-└── README.md
-```
-
-## Usage
-
-To preview changes in your browser:
+2. Synchronise the project's virtual environment:
 
 ```bash
-# mamba activate mkdocs
-mkdocs serve
+uv sync
 ```
 
-All pushes to main will render the content and publish to github pages automatically.
+3. Run `mkdocs serve`
+
+```bash
+uv run mkdocs serve
+```
+
+4. Open the documents in a web browser at: `http://localhost:8000`
